@@ -1,0 +1,61 @@
+{% load static %}
+
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light pb-3" style="background: rgb(204, 184, 196);">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a style="color: rgb(227, 202, 208);" class="nav-link" aria-current="page" href="{% url 'home' %}">Swap</a>
+          </li>
+          <li class="nav-item">
+            <form class="d-flex" role="search" action="{% url 'search' %}" method="get">
+              <select class="form-select sel-input shadow-none" aria-label="Default select example" name="category">
+                <option selected>Категория</option>
+                <option value="Мебель">Мебель</option>
+                <option value="Одежда">Одежда</option>
+                <option value="Бытовая техника">Бытовая техника</option>
+                <option value="Посуда">Посуда</option>
+                <option value="Продукты">Продукты</option>
+              </select>
+               <select class="form-select sel-input shadow-none" aria-label="Default select example" name="state">
+                <option selected>Состояние</option>
+                <option value="Новое">Новое</option>
+                <option value="Хорошее">Хорошее</option>
+                <option value="Среднее">Среднее</option>
+                <option value="Посуда">Посуда</option>
+                <option value="Требует ремонта">Требует ремонта</option>
+              </select>
+              <input class="form-control search-input shadow-none" type="text" placeholder="Название" aria-label="Search" name="title">
+              <input class="form-control search-input shadow-none" type="text" placeholder="Описание" aria-label="Search" name="description">
+              <input class="form-control search-input shadow-none" type="text" placeholder="Город" aria-label="Search" name="city">
+              <input class="form-control search-input shadow-none" type="text" placeholder="Вес" aria-label="Search" name="weight">
+              <input class="form-control search-input shadow-none" type="text" placeholder="Размер" aria-label="Search" name="size">
+              <input class="form-control search-input shadow-none" type="text" placeholder="Цена" aria-label="Search" name="price">
+              <button class="btn reg-button " type="submit">Поиск</button>
+            </form>
+          </li>
+        </ul>
+      </div>
+      <div class="position-absolute top-0 end-0 pt-2">
+        {% if user.is_authenticated %}
+        <div class="m-2 me-4 ">
+          <a class="reg-button" href="{% url 'my_bought_offers' %}">Приобретенное</a>
+          <a class="reg-button" href="{% url 'user_offers' %}">Выставленное</a>
+          <a class="reg-button" href="{% url 'add_offer' %}">Добавить</a>
+          <a class="reg-button" href="{%url 'logout' %}" style="border: none">Выйти</a>
+        </div>
+        {% else %}
+        <div class="m-2 me-4 ">
+          <a class="reg-button" href="{% url 'login' %}" >Вход</a>
+          <a class="reg-button" href="{% url 'register' %}" style="border: none">Регистрация</a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+</header>

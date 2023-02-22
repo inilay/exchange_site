@@ -1,0 +1,26 @@
+version: '3.9'
+ 
+services:
+  mongo:
+    image: mongo
+    container_name: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+    volumes:
+     - mongo_volume:/data/db
+ 
+
+  swap:
+    build: .
+    container_name: swap
+    command: "./entrypoint.sh"
+    volumes:
+      - ./volumes/media:/usr/src/swap/media
+    ports:
+      - 49088:49088
+    depends_on:
+      - mongo
+
+volumes:
+   mongo_volume:
