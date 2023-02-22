@@ -1,5 +1,5 @@
-#Simple website for sharing with mongodb used as a database.
+# Simple website for sharing with mongodb used as a database.
 
-# For local deployment
+For local deployment
 
 docker-compose up --build -d
